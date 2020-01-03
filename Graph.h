@@ -35,7 +35,7 @@ struct Vertex
 	size_t index;			///< indeks wierzcho³ka
 	unsigned int distance;	///< odleg³oœæ do nastêpnego wierzcho³ka
 	int parent_index;		///< indeks swojego "ojca"
-	LinkedList edges_list;	///< lista krawêdzi
+	LinkedList edges_list{nullptr};	///< lista krawêdzi
 };
 /** Struktura Grafu*/ 
 struct Graph

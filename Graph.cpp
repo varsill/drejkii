@@ -45,10 +45,14 @@ void dijkstra(Graph& graph, size_t beginning_vertex_index)
 			if (u.distance + it->value.weight < graph.vertices[it->value.to].distance)
 			{
 				Vertex v;
+				v.index = graph.vertices[it->value.to].index;
+				v.edges_list = graph.vertices[it->value.to].edges_list;
 				v.distance= u.distance + it->value.weight;
 				v.parent_index = u.index;
-				v.edges_list = graph.vertices[it->value.to].edges_list;
-				v.index=graph.vertices[it->value.to].index;
+				graph.vertices[v.index].distance = v.distance;
+				graph.vertices[v.index].parent_index = v.parent_index;
+				
+				
 				insert(*queue, v);
 			}
 			it = it->next;
