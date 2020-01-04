@@ -8,7 +8,7 @@ void insert(PriorityQueue& queue, Vertex element)
 
 	size_t i = queue.size;
 	size_t p = PARENT(i);
-	while(p!=0 and queue.t[i].distance<queue.t[p].distance)
+	while(p!=0 && queue.t[i].distance<queue.t[p].distance)
 	{
 		std::swap(queue.t[p], queue.t[i]);
 		i = p;
@@ -21,7 +21,7 @@ void heapify(PriorityQueue& queue, size_t i)
 	size_t l=LEFT(i);
 	size_t r=RIGHT(i);
 	size_t largest;
-	if (l <= queue.size and queue.t[l].distance < queue.t[i].distance) 
+	if (l <= queue.size && queue.t[l].distance < queue.t[i].distance)
 	{
 		largest = l;
 	}
@@ -29,7 +29,7 @@ void heapify(PriorityQueue& queue, size_t i)
 	{
 		largest = i;
 	}
-	if (r <= queue.size and queue.t[r].distance < queue.t[largest].distance)
+	if (r <= queue.size && queue.t[r].distance < queue.t[largest].distance)
 	{
 		largest = r;
 	}

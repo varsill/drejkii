@@ -1,5 +1,5 @@
 #include "Graph.h"
-
+#include <iostream>
 void add(LinkedList& list, Edge edge)
 {
 	LinkedListNode* buf = list.head;

@@ -4,14 +4,13 @@
 int main()
 {
 	
-
 	size_t howManyCities;
 	Tree dictionary = getCities("drogi.txt", howManyCities);
 	Graph graph = readGraphFromFile("drogi.txt");
-
-	dijkstra(graph, find(dictionary, "Katowice"));
-
-	std::cout << graph.vertices[find(dictionary, "Wroclaw")].distance;
+	
+	dijkstra(graph, find(dictionary, "Gliwice"));
+	std::cout << graph.vertices[find(dictionary, "Poznan")].distance;
+	
 	return 0;
 
 }
