@@ -1,18 +1,14 @@
 /** @file */
 #pragma once
-//#include "LinkedList.h"
 #include <string>
 #define MAX_N 64
 #define INF 99999999
-//struct LinkedList;
-
-//struct Edge;
 
 /** Struktura krawêdzi przechowuj¹ca parametry od i do oraz wagê krawêdzi*/
 struct Edge
 {
-	size_t from;
-	size_t to;
+	size_t from;		///< odleg³oœæ od wierzcho³ka
+	size_t to;			///< odleg³oœæ do wierzcho³ka
 	int weight;			///< waga krawêdzi
 };
 
@@ -40,8 +36,8 @@ struct Vertex
 /** Struktura Grafu*/ 
 struct Graph
 {
-	Vertex vertices[MAX_N]; 
-	size_t vertices_number; ///<Liczba wierzcho³ków
+	Vertex vertices[MAX_N]; ///<tablica wierzcho³ków(?)
+	size_t vertices_number; ///<liczba wierzcho³ków
 };
 
 
@@ -58,20 +54,20 @@ Graph createGraph(size_t how_many_vertices);
 @param beginning_vertex_index przekazuje indeks pierwszego wierzcho³ka grafu*/
 void dijkstra(Graph& graph, size_t beginning_vertex_index);
 /** Funkcja dodaj¹ca wêze³ do listy
-@param list
+@param list przekazuje liste do funkcji
 @param edge krawêdŸ grafu */
 void add(LinkedList& list, Edge edge);
 /** Funkcja szukaj¹ca podan¹ wartoœæ listy i zwracaj¹ca wskaŸnik na ten element listy
-@param list
+@param list przekazuje liste do funkcji
 @param edge przekazuje do funkcji wartoœæ elementu listy, którego wskaŸnik jest szukany
 @return zwraca wskaŸnik na szukany element listy*/
 LinkedListNode* find(LinkedList& list, Edge edge);
 /** Funkcja usuwa dany element listy
-@param list
+@param list przekazuje liste do funkcji
 @param edge przekazuje do funkcji wartoœæ elementu listy, który bedzie u¿ywany w funkcji find */
 void remove(LinkedList& list, Edge edge);
 /** Funkcja zawracaj¹ca wskaŸnik LinkedListNode'a na poprzedni element listy
-@param list
+@param list przekazuje liste do funkcji
 @param actual wskazuje na obecny wêze³ listy
 @return zwraca wskaŸnik na poprzedni element listy*/
 LinkedListNode* previous(LinkedList& list, LinkedListNode* actual);

@@ -4,16 +4,16 @@
 #define MAX_SIZE 1024
 #define INF 999999999
 
+#define LEFT(i)  2*i	///< lewy syn w kopcu
+#define RIGHT(i) 2*i+1	///< prawy syn w kopcu
+#define PARENT(i) i/2	///< rodzic w kopcu\
 
-#define LEFT(i)  2*i
-#define RIGHT(i) 2*i+1
-#define PARENT(i) i/2
 /** Utworzenie struktury kolejki priorytetowej*/
 struct Vertex;
 struct PriorityQueue
 {
-	size_t size;		///<  Rozmiar kopca	  
-	Vertex t[MAX_SIZE];	///< Tablica wierzcho³ków kopca
+	size_t size;		///< rozmiar kopca	  
+	Vertex t[MAX_SIZE];	///< tablica wierzcho³ków kopca
 };
 
 /** Funkcja dodaj¹ca element do kopca
