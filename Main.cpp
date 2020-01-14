@@ -39,7 +39,7 @@ int main(int argc, char** argv)
 
 	size_t howManyCities;
 	Tree dictionary = getCities(roadsFilePath, howManyCities);
-	Graph graph = readGraphFromFile(roadsFilePath);
+	Graph graph = readGraphFromFile(roadsFilePath, dictionary);
 
 	std::fstream routesToFind;
 	routesToFind.open(routesToFindFilePath);
@@ -47,12 +47,39 @@ int main(int argc, char** argv)
 	output.open(outputFilePath, std::ios::app); 
 	std::string cityA, cityB;
 	
-
+	std::string * arrayToReverse = new std::string[100];
 	while (!routesToFind.eof())
 	{
 		routesToFind >> cityA >> cityB;
 		dijkstra(graph, find(dictionary, cityA));
-		output << graph.vertices[find(dictionary, cityB)].distance << std::endl;
+		std::cout << "trasa: " << cityA << " --> " << cityB;
+		if (graph.vertices[find(dictionary, cityB)].distance != INF)
+		{
+			std::cout << " (" << graph.vertices[find(dictionary, cityB)].distance << " km)" << std::endl;
+			int city = find(dictionary, cityB);
+			int next_city = graph.vertices[city].parent_index;
+			//reverse route
+			int numberOfCities = 0;
+			while (next_city != -1)
+			{
+				arrayToReverse[numberOfCities] = graph.vertices[next_city].name + " --> " + graph.vertices[city].name + "   " + std::to_string((int)graph.vertices[city].distance_to_parent);
+				city = next_city;
+				next_city = graph.vertices[next_city].parent_index;
+				numberOfCities++;
+			}
+
+
+			for (int i = numberOfCities-1; i >= 0; i--)
+			{
+				std::cout << arrayToReverse[i] << std::endl;
+			}
+		}
+		else
+		{
+			std::cout << std::endl << "TRASA NIEMO¯LIWA DO WYZNACZENIA";
+		}
+		std::cout << std::endl;
+
 	}
 	routesToFind.close();
 	output.close();

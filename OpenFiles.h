@@ -13,6 +13,6 @@ Tree getCities(std::string path, size_t& howManyCities);
 /** Funkcja tworzy graf z odczytanego pliku
 @param path przekazuje œcie¿ke do pliku
 @return funkcja zwraca graf utworzony z miast i odleg³oœci miêdzy tymi miastami*/
-Graph readGraphFromFile(std::string path);
+Graph readGraphFromFile(std::string path, Tree dictionary);
 
 

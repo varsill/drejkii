@@ -27,12 +27,12 @@ Tree getCities(std::string path, size_t& howManyCities)
 	return tree;
 }
 
-Graph readGraphFromFile(std::string path)
+Graph readGraphFromFile(std::string path, Tree dictionary)
 {
 	
 	size_t howManyCities = 0;
 	Tree citiesDictionaryTree = getCities(path, howManyCities);
-	Graph graph = createGraph(howManyCities);
+	Graph graph = createGraph(howManyCities, path, dictionary);
 	std::fstream file;
 	std::string a, b;
 	int distance;

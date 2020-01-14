@@ -1,6 +1,8 @@
 /** @file */
 #pragma once
 #include <string>
+#include "Tree.h"
+#include <fstream>
 #define MAX_N 64
 #define INF 99999999
 
@@ -29,8 +31,10 @@ struct LinkedList
 struct Vertex
 {
 	size_t index;			///< indeks wierzcho³ka
+	std::string name; 
 	unsigned int distance;	///< odleg³oœæ do nastêpnego wierzcho³ka
 	int parent_index;		///< indeks swojego "ojca"
+	float distance_to_parent;///< odleglosc do ojca 
 	LinkedList edges_list{nullptr};	///< lista krawêdzi
 };
 /** Struktura Grafu*/ 
@@ -48,7 +52,7 @@ void addEdge(Graph& graph, Edge e);
 /** Funkcja tworz¹ca strukturê grafu
 @param how_many_vertices przekazuje liczbe wierzcho³ków do utworzenia w grafie
 @return zwraca wska¿nik na pierwszy element grafu*/
-Graph createGraph(size_t how_many_vertices);
+Graph createGraph(size_t how_many_vertices, std::string path_to_cities_file, Tree dictionary);
 /** Funkcja- algorytm Dijkstry, liczy najkrótsz¹ trasê miêdzy dwoma miastami
 @param graph przekazuje strukturê grafu do funkcji
 @param beginning_vertex_index przekazuje indeks pierwszego wierzcho³ka grafu*/
